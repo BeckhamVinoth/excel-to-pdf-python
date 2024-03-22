@@ -38,7 +38,20 @@ for path in file_paths:
         pdf.cell(w=30, h=8, txt=str(row["price_per_unit"]), border=1)
         pdf.cell(w=30, h=8, txt=str(row["total_price"]), border=1, ln=1)
 
+    total_price = df['total_price'].sum()
+    pdf.set_font(family="Times", size=10)
+    pdf.set_text_color(80, 80, 80)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=70, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt=str(total_price), border=1, ln=1)
 
+    pdf.set_font(family="Times", size=10)
+    pdf.cell(w=30, h=8, txt=f"The total price is {total_price}", ln=1)
+
+    pdf.set_font(family="Times", size=10)
+    pdf.cell(w=40, h=8, txt="Beckham & co pvt.limited")
+    pdf.image('pythonhow.png', w=10)
 
     pdf.output(f"pdfs/{file_name}.pdf")
-
